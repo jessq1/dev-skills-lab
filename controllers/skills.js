@@ -15,13 +15,14 @@ function index(req, res) {
       res.render('skills/index', {
         skills,
         error,
-        time: req.time
+        time: req.time,
+        title: 'All Skills',
       })
     })
   }
   
   function newSkill(req,res){
-      res.render('skills/new')
+      res.render('skills/new',{title: 'New Skill'})
   }
   function deleteSkill(req, res) {
     skillsDb.findByIdAndDelete(req.params.id, function(error, skill) {
@@ -40,7 +41,8 @@ function index(req, res) {
     skillsDb.findById(req.params.id, function(error, skill) {
       res.render('skills/show', {
         skill,
-        error
+        error,
+        title: 'New Skills'
       })
     })
   }
