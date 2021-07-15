@@ -6,19 +6,20 @@ export {
 }
 
 const skills = [
-    {text: 'HTML', level: true, _id: 123456},
-    {text: 'CSS', level: false, _id: 789012},
-    {text: 'JavaScript', level: false, _id: 345678},
-    {text: 'MongoDb', level: false, _id: 901234},
-    {text: 'Express', level: false, _id: 567890},
-    {text: 'Python', level: false, _id: 135790},
+    {text: 'HTML', level: 5, _id: 123456},
+    {text: 'CSS', level: 4, _id: 789012},
+    {text: 'JavaScript', level: 5, _id: 345678},
+    {text: 'MongoDb', level: 3, _id: 901234},
+    {text: 'Express', level: 3, _id: 567890},
+    {text: 'Python', level: 2, _id: 135790},
   ]
 
 
   function create(skill,callback){
     skill._id = Date.now() %1000000
-    skill.level = false
+    skill.level = skill.level
     skill.text = skill.text
+    skills.push(skill)
     return callback(null,skill)
   }
   

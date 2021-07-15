@@ -5,8 +5,28 @@
 
 <body>
   <h1>All Skills</h1>
- 
+  <% if(error) { %>
+    <h2><%= error %></h2>
+  <% } %>
+  <ul>
+    <% skills.forEach(function(skill) { %>
+      <li>
+        <form 
+          action="/skills/<%= skill._id %>?_method=DELETE"
+          class="delete-form"
+          method="POST"
+        >
+          <button type="submit">X</button>
+        </form>
+        <a href="/skills/<%= skill._id %>"><%= skill.text %></a>
+          - 
+        Proficiency: <%= skill.level %>
+      </li>
+    <% }) %>
+  </ul>
   
+  <a href="/skills/new">Add New Skill</a>
+
 
 </body>
 </html>

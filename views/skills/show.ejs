@@ -4,7 +4,14 @@
 <%- include('../partials/head.ejs') %>
 
 <body>
-  <h1><%= title %></h1>
+
+  <% if(error) { %>
+    <h2><%= error %></h2>
+  <% } else { %> 
+    <h1><%= skill.text %></h1>
+    <h3>Skill #<%= skill._id %></h3>
+    <p>Level of Proficiency: <%= skill.level %></p>
+  <% } %>
 
   <a href='/skills'>See All Skills</a>
 

@@ -42,7 +42,7 @@ function index(req, res) {
       res.render('skills/show', {
         skill,
         error,
-        title: 'New Skills'
+        title: skill.text
       })
     })
   }
