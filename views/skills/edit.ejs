@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head.ejs') %>
+
+<body>
+
+  <% if(error) { %>
+    <h2><%= error %></h2>
+  <% } else { %> 
+    <h1><%= skill.text %></h1>
+    <h3>Skill #<%= skill._id %></h3>
+
+    <form id="new-form" action="/skills/<%= skill._id %>?_method=PUT" method="POST">
+    <label for="level-select">Level of Proficiency</label>
+    <select name="level" id="level-select">
+      <option <%= skill.level === '1' ? 'selected' : '' %> value="1">1</option>
+      <option <%= skill.level === '2' ? 'selected' : '' %> value="2">2</option>
+      <option <%= skill.level === '3' ? 'selected' : '' %> value="3">3</option>
+      <option <%= skill.level === '4' ? 'selected' : '' %> value="4">4</option>
+      <option <%= skill.level === '5' ? 'selected' : '' %> value="5">5</option>
+    </select>
+    <button type="submit">Save Skill</button>
+  </form>
+  <% } %>
+
+  <a href='/skills'>See All Skills</a>
+
+</body>
+</html>

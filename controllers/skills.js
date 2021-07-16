@@ -7,8 +7,19 @@ export {
   show,
   create,
   deleteSkill as delete,
+  edit,
+  update,
 }
 
+function edit(req,res){
+  skillsDb.findById(req.params.id, function(error, skill) {
+    res.render('skills/edit', {
+      skill,
+      error,
+      title: "Edit Skill"
+    })
+  })
+}
 
 function index(req, res) {
     skillsDb.find({}, function(error, skills) {
@@ -47,4 +58,8 @@ function index(req, res) {
     })
   }
   
-  
+ function update(req,res){
+  skillsDb.findByIdAndUpdate(req.params.id, req.body.level, function(error, skill) {
+    res.redirect(`/skills/${skill._id}`)
+  })
+ } 

@@ -3,6 +3,7 @@ export {
     findById,
     create,
     findByIdAndDelete,
+    findByIdAndUpdate,
 }
 
 const skills = [
@@ -43,6 +44,17 @@ const skills = [
       return callback(error, null)
     }
   }
+  function findByIdAndUpdate(id, newLevel, callback) {
+    try {
+      const skill = skills.find(skill => skill._id === parseInt(id))
+      skill.level = newLevel
+      if (!skill) throw new Error ('No skill was found')
+      return callback(null, skill)
+    } catch (error) {
+      return callback(error, null)
+    }
+  }
+
   
   
   const find = (conditions, callback) => {
